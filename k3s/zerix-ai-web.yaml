@@ -17,7 +17,7 @@ spec:
         - name: my-ghcr-secret
       containers:
         - name: zerix-web
-          image: ghcr.io/zerix-defi/zerix-web:latest
+          image: ghcr.io/zerix/zerix-web:latest
           env:
             - name: CONSOLE_API_URL
               value: "https://test-ai-api.zerix.io"

@@ -22,13 +22,13 @@ jobs:
 
       - name: Build and Tag the Docker image
         run: |
-          docker build ./web --file ./web/Dockerfile --tag ghcr.io/zerix-defi/zerix-web:$TIMESTAMP
-          docker tag ghcr.io/zerix-defi/zerix-web:$TIMESTAMP ghcr.io/zerix-defi/zerix-web:latest
+          docker build ./web --file ./web/Dockerfile --tag ghcr.io/zerix/zerix-web:$TIMESTAMP
+          docker tag ghcr.io/zerix/zerix-web:$TIMESTAMP ghcr.io/zerix/zerix-web:latest
 
       - name: Push image to GitHub Container Registry
         run: |
-          docker push ghcr.io/zerix-defi/zerix-web:$TIMESTAMP
-          docker push ghcr.io/zerix-defi/zerix-web:latest
+          docker push ghcr.io/zerix/zerix-web:$TIMESTAMP
+          docker push ghcr.io/zerix/zerix-web:latest
 
       - name: Restart Deployment on Kubernetes
         run: |

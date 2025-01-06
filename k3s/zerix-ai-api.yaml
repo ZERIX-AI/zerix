@@ -17,7 +17,7 @@ spec:
         - name: my-ghcr-secret
       containers:
         - name: zerix-api
-          image: ghcr.io/zerix-defi/zerix-api:latest
+          image: ghcr.io/zerix/zerix-api:latest
           envFrom:
             - configMapRef:
                 name: zerix-api-config
@@ -43,7 +43,7 @@ spec:
             initialDelaySeconds: 60
             periodSeconds: 30
         - name: zerix-worker
-          image: ghcr.io/zerix-defi/zerix-api:latest
+          image: ghcr.io/zerix/zerix-api:latest
           envFrom:
             - configMapRef:
                 name: zerix-api-config
@@ -55,7 +55,7 @@ spec:
               mountPath: /app/api/storage
               subPath: storage
         - name: zerix-beat
-          image: ghcr.io/zerix-defi/zerix-api:latest
+          image: ghcr.io/zerix/zerix-api:latest
           envFrom:
             - configMapRef:
                 name: zerix-api-config

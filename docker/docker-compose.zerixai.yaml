@@ -148,7 +148,7 @@ x-shared-env: &shared-api-worker-env
 services:
   # API service
   api:
-    image: ghcr.io/zerix-defi/zerix-api:latest
+    image: ghcr.io/zerix/zerix-api:latest
     restart: always
     environment:
       <<: *shared-api-worker-env
@@ -166,7 +166,7 @@ services:
 
   # worker service
   worker:
-    image: ghcr.io/zerix-defi/zerix-api:latest
+    image: ghcr.io/zerix/zerix-api:latest
     restart: always
     environment:
       <<: *shared-api-worker-env
@@ -182,7 +182,7 @@ services:
 
   # beat service
   beat:
-    image: ghcr.io/zerix-defi/zerix-api:latest
+    image: ghcr.io/zerix/zerix-api:latest
     restart: always
     environment:
       <<: *shared-api-worker-env
@@ -198,7 +198,7 @@ services:
 
   # Frontend web application.
   web:
-    image: ghcr.io/zerix-defi/zerix-web:latest
+    image: ghcr.io/zerix/zerix-web:latest
     restart: always
     environment:
       CONSOLE_API_URL: ${CONSOLE_API_URL:-}
@@ -250,7 +250,7 @@ services:
 
   # The ZerixSandbox
   sandbox:
-    image: ghcr.io/zerix-defi/zerix-sandbox:0.2.10
+    image: ghcr.io/zerix/zerix-sandbox:0.2.10
     restart: always
     environment:
       # The ZerixSandbox configurations
