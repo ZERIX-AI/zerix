@@ -68,4 +68,4 @@ MIT License
 
 ## Contact
 
-For more information, please contact: hello@zerix.io
+For more information, please contact: business@zerix.io
