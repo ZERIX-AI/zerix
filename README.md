@@ -2,6 +2,28 @@
 
 Zerix AI Platform is a powerful and flexible AI application development platform that enables you to create, deploy, and manage AI applications with ease.
 
+## 1. Introduction
+
+### 1.1 Project Introduction
+Zerix is the brain of the intelligent agent network, capable of intelligently creating AI agents and orchestrating their collaboration to accomplish complex tasks. As a self-optimizing and modular infrastructure, Zerix leverages microservices architecture, distributed computing, and knowledge graph technology to transform single-task AI agents into collaborative networks, achieving efficient multi-agent cooperation.
+
+### 1.2 Project Vision
+Zerix aims to become the standard infrastructure for intelligent agent networks, driving multi-agent collaboration as an industry norm. By enabling intelligent agent generation and task orchestration, Zerix seeks to revolutionize productivity workflows, providing automated and personalized task solutions to help users achieve efficient innovation across a wide range of scenarios.
+
+## 2. Core Features and Architecture
+
+### 2.1 System Architecture Overview
+1. Core Intelligence Engine: Powered by reinforcement learning and natural language processing (NLP) technology, this module handles task analysis, intelligent decision-making, and agent collaboration.
+2. Agent Creation Module: Supports containerized intelligent agent modules and offers pre-trained models such as GPT and BERT to meet diverse task requirements.
+3. Task Orchestration Module: Utilizes a directed acyclic graph (DAG) structure for dynamic task chain orchestration and resource scheduling.
+4. Feedback and Optimization Module: Integrates A/B testing and performance tracking mechanisms to log task execution data and continuously optimize agent performance and task chain structures.
+
+### 2.2 Key Features
+- AI Agents Generation and Recommendations: Automatically generates optimal task chains of AI agents based on user input through natural language understanding (NLU) analysis and provides personalized suggestions.
+- Multi-Agent Collaboration Network: Supports parallel task execution and dynamic resource allocation, improving task response times through event-driven architecture (EDA).
+- Self-Learning and Adaptive Optimization: Employs federated learning and adaptive model updating mechanisms to continuously improve task chain execution.
+- Open API Support: Offers RESTful API and gRPC interfaces for third-party intelligent agents and service integrations, extending the platform's functionality.
+
 ## Overview
 
 The platform consists of several key components:
