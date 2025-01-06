@@ -1,0 +1,62 @@
+identity:
+  name: dalle2
+  author: Zerix
+  label:
+    en_US: DALL-E 2
+  description:
+    en_US: DALL-E 2 is a powerful drawing tool that can draw the image you want based on your prompt
+    pt_BR: DALL-E 2 is a powerful drawing tool that can draw the image you want based on your prompt
+description:
+  human:
+    en_US: DALL-E is a text to image tool
+    pt_BR: DALL-E is a text to image tool
+  llm: DALL-E is a tool used to generate images from text
+parameters:
+  - name: prompt
+    type: string
+    required: true
+    label:
+      en_US: Prompt
+      pt_BR: Prompt
+    human_description:
+      en_US: Image prompt, you can check the official documentation of DallE 2
+      pt_BR: Image prompt, you can check the official documentation of DallE 2
+    llm_description: Image prompt of DallE 2, you should describe the image you want to generate as a list of words as possible as detailed
+    form: llm
+  - name: size
+    type: select
+    required: true
+    human_description:
+      en_US: used for selecting the image size
+      pt_BR: used for selecting the image size
+    label:
+      en_US: Image size
+      pt_BR: Image size
+    form: form
+    options:
+      - value: small
+        label:
+          en_US: Small(256x256)
+          pt_BR: Small(256x256)
+      - value: medium
+        label:
+          en_US: Medium(512x512)
+          pt_BR: Medium(512x512)
+      - value: large
+        label:
+          en_US: Large(1024x1024)
+          pt_BR: Large(1024x1024)
+    default: large
+  - name: n
+    type: number
+    required: true
+    human_description:
+      en_US: used for selecting the number of images
+      pt_BR: used for selecting the number of images
+    label:
+      en_US: Number of images
+      pt_BR: Number of images
+    form: form
+    default: 1
+    min: 1
+    max: 10

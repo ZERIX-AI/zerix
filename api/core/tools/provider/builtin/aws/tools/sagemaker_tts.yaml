@@ -1,0 +1,124 @@
+identity:
+  name: sagemaker_tts
+  author: AWS
+  label:
+    en_US: SagemakerTTS
+    pt_BR: SagemakerTTS
+  icon: icon.svg
+description:
+  human:
+    en_US: A tool for Speech synthesis - https://github.com/aws-samples/zerix-aws-tool
+    pt_BR: A tool for Speech synthesis.
+  llm: A tool for Speech synthesis. You can find deploy notebook on Github Repo - https://github.com/aws-samples/zerix-aws-tool
+parameters:
+  - name: sagemaker_endpoint
+    type: string
+    required: true
+    label:
+      en_US: sagemaker endpoint for tts
+      pt_BR: sagemaker endpoint for tts
+    human_description:
+      en_US: sagemaker endpoint for tts
+      pt_BR: sagemaker endpoint for tts
+    llm_description: sagemaker endpoint for tts
+    form: form
+  - name: tts_text
+    type: string
+    required: true
+    label:
+      en_US: tts text
+      pt_BR: tts text
+    human_description:
+      en_US: tts text
+      pt_BR: tts text
+    llm_description: tts text
+    form: llm
+  - name: tts_infer_type
+    type: select
+    required: false
+    label:
+      en_US: tts infer type
+      pt_BR: tts infer type
+    human_description:
+      en_US: tts infer type
+      pt_BR: tts infer type
+    llm_description: tts infer type
+    options:
+      - value: PresetVoice
+        label:
+          en_US: preset voice
+      - value: CloneVoice
+        label:
+          en_US: clone voice
+      - value: CloneVoice_CrossLingual
+        label:
+          en_US: clone crossLingual voice
+      - value: InstructVoice
+        label:
+          en_US: instruct voice
+    form: form
+  - name: voice
+    type: select
+    required: false
+    label:
+      en_US: preset voice
+      pt_BR: preset voice
+    human_description:
+      en_US: preset voice
+      pt_BR: preset voice
+    llm_description: preset voice
+    options:
+      - value: male-en
+        label:
+          en_US: en-US male
+      - value: female-en
+        label:
+          en_US: en-US female
+      - value: female-yue
+        label:
+          en_US: en-US female
+    form: form
+  - name: mock_voice_audio
+    type: string
+    required: false
+    label:
+      en_US: clone voice link
+      pt_BR: clone voice link
+    human_description:
+      en_US: clone voice link
+      pt_BR: clone voice link
+    llm_description: clone voice link
+    form: llm
+  - name: mock_voice_text
+    type: string
+    required: false
+    label:
+      en_US: text of clone voice
+      pt_BR: text of clone voice
+    human_description:
+      en_US: text of clone voice
+      pt_BR: text of clone voice
+    llm_description: text of clone voice
+    form: llm
+  - name: voice_instruct_prompt
+    type: string
+    required: false
+    label:
+      en_US: instruct prompt for voice
+      pt_BR: instruct prompt for voice
+    human_description:
+      en_US: instruct prompt for voice
+      pt_BR: instruct prompt for voice
+    llm_description: instruct prompt for voice
+    form: llm
+  - name: aws_region
+    type: string
+    required: false
+    label:
+      en_US: region of sagemaker endpoint
+      pt_BR: region of sagemaker endpoint
+    human_description:
+      en_US: region of sagemaker endpoint
+      pt_BR: region of sagemaker endpoint
+    llm_description: region of sagemaker endpoint
+    form: form

@@ -1,0 +1,144 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: zerix-api-config
+  namespace: zerix-ai-test
+data:
+  # ------------------------------
+  # Environment Variables for API service & worker
+  # ------------------------------
+
+  # ------------------------------
+  # Common Variables
+  # ------------------------------
+
+  # The backend URL of the console API,
+  # used to concatenate the authorization callback.
+  # If empty, it is the same domain.
+  # Example: https://api.console.zerix.ai
+  CONSOLE_API_URL: "https://test-ai-api.zerix.io"
+
+  # The front-end URL of the console web,
+  # used to concatenate some front-end addresses and for CORS configuration use.
+  # If empty, it is the same domain.
+  # Example: https://console.zerix.ai
+  CONSOLE_WEB_URL: "https://test-ai.zerix.io"
+
+  # Service API Url,
+  # used to display Service API Base Url to the front-end.
+  # If empty, it is the same domain.
+  # Example: https://api.zerix.ai
+  SERVICE_API_URL: "https://test-ai-api.zerix.io"
+
+  # WebApp API backend Url,
+  # used to declare the back-end URL for the front-end API.
+  # If empty, it is the same domain.
+  # Example: https://api.app.zerix.ai
+  APP_API_URL: "https://test-ai-api.zerix.io"
+
+  # WebApp Url,
+  # used to display WebAPP API Base Url to the front-end.
+  # If empty, it is the same domain.
+  # Example: https://app.zerix.ai
+  APP_WEB_URL: "https://test-ai.zerix.io"
+
+  # File preview or download Url prefix.
+  # used to display File preview or download Url to the front-end or as Multi-model inputs;
+  # Url is signed and has expiration time.
+  FILES_URL: "https://test-ai-api.zerix.io"
+
+  # ------------------------------
+  # Server Configuration
+  # ------------------------------
+
+  # API service binding address, default: 0.0.0.0, i.e., all addresses can be accessed.
+  ZERIX_BIND_ADDRESS: "0.0.0.0"  
+
+  # API service binding port number, default 5001.
+  ZERIX_PORT: "5001"  
+
+  # The number of API server workers, i.e., the number of gevent workers.
+  # Formula: number of cpu cores x 2 + 1
+  # Reference: https://docs.gunicorn.org/en/stable/design.html#how-many-workers
+  SERVER_WORKER_AMOUNT:
+
+  # Defaults to gevent. If using windows, it can be switched to sync or solo.
+  SERVER_WORKER_CLASS:
+
+  # Similar to SERVER_WORKER_CLASS. Default is gevent.
+  # If using windows, it can be switched to sync or solo.
+  CELERY_WORKER_CLASS:
+
+  # Request handling timeout. The default is 200,
+  # it is recommended to set it to 360 to support a longer sse connection time.
+  GUNICORN_TIMEOUT: "360"
+
+  # The number of Celery workers. The default is 1, and can be set as needed.
+  CELERY_WORKER_AMOUNT:
+
+  # Flag indicating whether to enable autoscaling of Celery workers.
+  CELERY_AUTO_SCALE: "false"
+
+  # The maximum number of Celery workers that can be autoscaled.
+  CELERY_MAX_WORKERS:
+
+  # The minimum number of Celery workers that can be autoscaled.
+  CELERY_MIN_WORKERS:
+
+  # API Tool configuration
+  API_TOOL_DEFAULT_CONNECT_TIMEOUT: "10"
+  API_TOOL_DEFAULT_READ_TIMEOUT: "60"
+
+  # ------------------------------
+  # Database Configuration
+  # ------------------------------
+
+  DB_USERNAME: "postgres"
+  DB_PASSWORD: "zerixai123456"
+  DB_HOST: "zerix-db-service.zerix-ai-test"
+  DB_PORT: "5432"
+  DB_DATABASE: "zerix"
+
+  # ------------------------------
+  # Redis Configuration
+  # ------------------------------
+
+  REDIS_HOST: "zerix-redis-service.zerix-ai-test"  
+  REDIS_PORT: "6379"
+  REDIS_USERNAME:
+  REDIS_PASSWORD: "zerixai123456"  
+  REDIS_USE_SSL: "false"
+
+  # ------------------------------
+  # ETL Configuration
+  # ------------------------------
+
+  # ETl type, support: `zerix`, `Unstructured`
+  # `zerix` Zerix's proprietary file extraction scheme
+  # `Unstructured` Unstructured.io file extraction scheme
+  ETL_TYPE: "zerix"
+
+  # ------------------------------
+  # Environment Variables for sandbox Service
+  # ------------------------------
+
+  # The API key for the sandbox service
+  SANDBOX_API_KEY: "zerix-sandbox"
+
+  # ------------------------------
+  # Vector Store Configuration
+  # ------------------------------
+
+  # Vector store type, support: `weaviate`, `qdrant`, `milvus`
+  VECTOR_STORE: "weaviate"
+
+  # Weaviate Configuration
+  WEAVIATE_ENDPOINT: "http://zerix-weaviate:8080"
+  WEAVIATE_API_KEY:
+  WEAVIATE_GRPC_ENABLED: "false"
+  WEAVIATE_BATCH_SIZE: "100"
+
+  # Qdrant Configuration
+  QDRANT_URL: "http://zerix-qdrant:6333"
+  QDRANT_API_KEY:
+  QDRANT_BATCH_SIZE: "100"

@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zerix-web
+  namespace: zerix-ai-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zerix-web
+  template:
+    metadata:
+      labels:
+        app: zerix-web
+    spec:
+      imagePullSecrets:
+        - name: my-ghcr-secret
+      containers:
+        - name: zerix-web
+          image: ghcr.io/zerix-defi/zerix-web:latest
+          env:
+            - name: CONSOLE_API_URL
+              value: "https://test-ai-api.zerix.io"
+            - name: APP_API_URL
+              value: "https://test-ai-api.zerix.io"
+            - name: NEXT_PUBLIC_PROJECT_ID
+              value: "411f08adbe7f910afc5fc232af130533"
+          ports:
+            - containerPort: 3000
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: zerix-web-service
+  namespace: zerix-ai-test
+spec:
+  selector:
+    app: zerix-web
+  ports:
+    - port: 3000
+      targetPort: 3000
+  type: NodePort
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: zerix-web-ingress
+  namespace: zerix-ai-test
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+    - host: test-ai.zerix.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: zerix-web-service
+                port:
+                  number: 3000

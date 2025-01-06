@@ -1,0 +1,50 @@
+identity:
+  author: Zerix
+  name: dalle
+  label:
+    en_US: DALL-E
+    pt_BR: DALL-E
+  description:
+    en_US: DALL-E art
+    pt_BR: DALL-E art
+  icon: icon.png
+  tags:
+    - image
+    - productivity
+credentials_for_provider:
+  openai_api_key:
+    type: secret-input
+    required: true
+    label:
+      en_US: OpenAI API key
+      pt_BR: OpenAI API key
+    help:
+      en_US: Please input your OpenAI API key
+      pt_BR: Please input your OpenAI API key
+    placeholder:
+      en_US: Please input your OpenAI API key
+      pt_BR: Please input your OpenAI API key
+  openai_organization_id:
+    type: text-input
+    required: false
+    label:
+      en_US: OpenAI organization ID
+      pt_BR: OpenAI organization ID
+    help:
+      en_US: Please input your OpenAI organization ID
+      pt_BR: Please input your OpenAI organization ID
+    placeholder:
+      en_US: Please input your OpenAI organization ID
+      pt_BR: Please input your OpenAI organization ID
+  openai_base_url:
+    type: text-input
+    required: false
+    label:
+      en_US: OpenAI base URL
+      pt_BR: OpenAI base URL
+    help:
+      en_US: Please input your OpenAI base URL
+      pt_BR: Please input your OpenAI base URL
+    placeholder:
+      en_US: Please input your OpenAI base URL
+      pt_BR: Please input your OpenAI base URL

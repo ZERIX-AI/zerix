@@ -1,0 +1,72 @@
+identity:
+  name: gitlab_commits
+  author: Zerix
+  label:
+    en_US: GitLab Commits
+description:
+  human:
+    en_US: A tool for query GitLab commits, Input should be a exists username or project.
+  llm: A tool for query GitLab commits, Input should be a exists username or project.
+parameters:
+  - name: username
+    type: string
+    required: false
+    label:
+      en_US: username
+    human_description:
+      en_US: username
+    llm_description: User name for GitLab
+    form: llm
+  - name: repository
+    type: string
+    required: false
+    label:
+      en_US: repository
+    human_description:
+      en_US: repository
+    llm_description: Repository path for GitLab, like namespace/project_name.
+    form: llm
+  - name: project
+    type: string
+    required: false
+    label:
+      en_US: project
+    human_description:
+      en_US: project
+    llm_description: project for GitLab
+    form: llm
+  - name: start_time
+    type: string
+    required: false
+    label:
+      en_US: start_time
+    human_description:
+      en_US: start_time
+    llm_description: Start time for GitLab
+    form: llm
+  - name: end_time
+    type: string
+    required: false
+    label:
+      en_US: end_time
+    human_description:
+      en_US: end_time
+    llm_description: End time for GitLab
+    form: llm
+  - name: change_type
+    type: select
+    required: false
+    options:
+      - value: all
+        label:
+          en_US: all
+      - value: new
+        label:
+          en_US: new
+    default: all
+    label:
+      en_US: change_type
+    human_description:
+      en_US: change_type
+    llm_description: Content change type for GitLab
+    form: llm

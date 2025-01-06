@@ -1,0 +1,28 @@
+provider: google
+label:
+  en_US: Google
+description:
+  en_US: Google's Gemini model.
+icon_small:
+  en_US: icon_s_en.svg
+icon_large:
+  en_US: icon_l_en.svg
+background: "#FCFDFF"
+help:
+  title:
+    en_US: Get your API Key from Google
+  url:
+    en_US: https://ai.google.dev/
+supported_model_types:
+  - llm
+configurate_methods:
+  - predefined-model
+provider_credential_schema:
+  credential_form_schemas:
+    - variable: google_api_key
+      label:
+        en_US: API Key
+      type: secret-input
+      required: true
+      placeholder:
+        en_US: Enter your API Key

@@ -1,0 +1,23 @@
+identity:
+  name: google_search
+  author: Zerix
+  label:
+    en_US: GoogleSearch
+    pt_BR: GoogleSearch
+description:
+  human:
+    en_US: A tool for performing a Google SERP search and extracting snippets and webpages.Input should be a search query.
+    pt_BR: A tool for performing a Google SERP search and extracting snippets and webpages.Input should be a search query.
+  llm: A tool for performing a Google SERP search and extracting snippets and webpages.Input should be a search query.
+parameters:
+  - name: query
+    type: string
+    required: true
+    label:
+      en_US: Query string
+      pt_BR: Query string
+    human_description:
+      en_US: used for searching
+      pt_BR: used for searching
+    llm_description: key words for searching
+    form: llm

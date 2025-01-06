@@ -1,0 +1,70 @@
+identity:
+  name: sagemaker_text_rerank
+  author: AWS
+  label:
+    en_US: SagemakerRerank
+    pt_BR: SagemakerRerank
+  icon: icon.svg
+description:
+  human:
+    en_US: A tool for performing text similarity ranking. You can find deploy notebook on Github Repo - https://github.com/aws-samples/zerix-aws-tool
+    pt_BR: A tool for performing text similarity ranking.
+  llm: A tool for performing text similarity ranking. You can find deploy notebook on Github Repo - https://github.com/aws-samples/zerix-aws-tool
+parameters:
+  - name: sagemaker_endpoint
+    type: string
+    required: true
+    label:
+      en_US: sagemaker endpoint for reranking
+      pt_BR: sagemaker endpoint for reranking
+    human_description:
+      en_US: sagemaker endpoint for reranking
+      pt_BR: sagemaker endpoint for reranking
+    llm_description: sagemaker endpoint for reranking
+    form: form
+  - name: query
+    type: string
+    required: true
+    label:
+      en_US: Query string
+      pt_BR: Query string
+    human_description:
+      en_US: key words for searching
+      pt_BR: key words for searching
+    llm_description: key words for searching
+    form: llm
+  - name: candidate_texts
+    type: string
+    required: true
+    label:
+      en_US: text candidates
+      pt_BR: text candidates
+    human_description:
+      en_US: searched candidates by query
+      pt_BR: searched candidates by query
+    llm_description: searched candidates by query
+    form: llm
+  - name: topk
+    type: number
+    required: false
+    form: form
+    label:
+      en_US: Limit for results count
+      pt_BR: Limit for results count
+    human_description:
+      en_US: Limit for results count
+      pt_BR: Limit for results count
+    min: 1
+    max: 10
+    default: 5
+  - name: aws_region
+    type: string
+    required: false
+    label:
+      en_US: region of sagemaker endpoint
+      pt_BR: region of sagemaker endpoint
+    human_description:
+      en_US: region of sagemaker endpoint
+      pt_BR: region of sagemaker endpoint
+    llm_description: region of sagemaker endpoint
+    form: form

@@ -1,0 +1,205 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: zerix-ai-test
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zerix-middleware
+  namespace: zerix-ai-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zerix-middleware
+  template:
+    metadata:
+      labels:
+        app: zerix-middleware
+    spec:
+      nodeSelector:
+        role: storage
+      containers:
+        - name: zerix-db
+          image: postgres:15-alpine
+          env:
+            - name: POSTGRES_USER
+              value: "postgres"
+            - name: POSTGRES_PASSWORD
+              value: "zerixai123456"
+            - name: POSTGRES_DB
+              value: "zerix"
+            - name: PGDATA
+              value: "/var/lib/postgresql/data/pgdata"
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: zerix-storage
+              mountPath: /var/lib/postgresql/data
+        - name: zerix-redis
+          image: redis:6-alpine
+          command: [ "redis-server", "--requirepass", "zerixai123456" ]
+          ports:
+            - containerPort: 6379
+          volumeMounts:
+            - name: zerix-storage
+              mountPath: /data
+              subPath: redis
+        - name: sandbox
+          image: langgenius/zerix-sandbox:0.2.10
+          env:
+            - name: API_KEY
+              value: "zerix-sandbox"
+            - name: GIN_MODE
+              value: "release"
+            - name: WORKER_TIMEOUT
+              value: "15"
+            - name: ENABLE_NETWORK
+              value: "true"
+            - name: SANDBOX_PORT
+              value: "8194"
+          ports:
+            - containerPort: 8194
+          volumeMounts:
+            - name: zerix-storage
+              mountPath: /dependencies
+              subPath: sandbox
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8194
+            initialDelaySeconds: 5
+            periodSeconds: 10
+        - name: zerix-weaviate
+          image: semitechnologies/weaviate:1.19.0
+          profiles:
+            - name: weaviate
+          ports:
+            - containerPort: 8080
+          env:
+            - name: PERSISTENCE_DATA_PATH
+              value: "/var/lib/weaviate"
+            - name: QUERY_DEFAULTS_LIMIT
+              value: "25"
+            - name: AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED
+              value: "false"
+            - name: DEFAULT_VECTORIZER_MODULE
+              value: "none"
+            - name: CLUSTER_HOSTNAME
+              value: "node1"
+            - name: AUTHENTICATION_APIKEY_ENABLED
+              value: "true"
+            - name: AUTHENTICATION_APIKEY_ALLOWED_KEYS
+              value: "WVF5YThaHlkYwhGUSmCRgsX3tD5ngdN8pkih"
+            - name: AUTHENTICATION_APIKEY_USERS
+              value: "hello@zerix.io"
+            - name: AUTHORIZATION_ADMINLIST_ENABLED
+              value: "true"
+            - name: AUTHORIZATION_ADMINLIST_USERS
+              value: "hello@zerix.io"
+          volumeMounts:
+            - name: zerix-storage
+              mountPath: /var/lib/weaviate
+              subPath: weaviate
+      volumes:
+        - name: zerix-storage
+          persistentVolumeClaim:
+            claimName: zerix-storage-pvc
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: zerix-db-service
+  namespace: zerix-ai-test
+spec:
+  selector:
+    app: zerix-middleware
+  ports:
+    - port: 5432
+      protocol: TCP
+      targetPort: 5432
+      nodePort: 30001
+  type: NodePort
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: zerix-redis-service
+  namespace: zerix-ai-test
+spec:
+  selector:
+    app: zerix-middleware
+  ports:
+    - port: 6379
+      targetPort: 6379
+  type: ClusterIP
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: zerix-sandbox-service
+  namespace: zerix-ai-test
+spec:
+  selector:
+    app: zerix-middleware
+  ports:
+    - protocol: TCP
+      port: 8194
+      targetPort: 8194
+  type: ClusterIP
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: zerix-weaviate-service
+  namespace: zerix-ai-test
+spec:
+  selector:
+    app: zerix-middleware
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: zerix-pv
+  namespace: zerix-ai-test
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: /app/volumes
+  storageClassName: local-path
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: zerix-storage-pvc
+  namespace: zerix-ai-test
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi
+  volumeName: zerix-pv
+  storageClassName: local-path

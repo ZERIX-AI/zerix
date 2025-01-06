@@ -1,0 +1,13 @@
+identity:
+  author: AWS
+  name: aws
+  label:
+    en_US: AWS
+    pt_BR: AWS
+  description:
+    en_US: Services on AWS.
+    pt_BR: Services on AWS.
+  icon: icon.svg
+  tags:
+    - search
+credentials_for_provider:

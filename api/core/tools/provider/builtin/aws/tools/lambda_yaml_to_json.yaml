@@ -1,0 +1,45 @@
+identity:
+  name: lambda_yaml_to_json
+  author: AWS
+  label:
+    en_US: LambdaYamlToJson
+    pt_BR: LambdaYamlToJson
+  icon: icon.svg
+description:
+  human:
+    en_US: A tool to convert yaml to json using AWS Lambda.
+    pt_BR: A tool to convert yaml to json using AWS Lambda.
+  llm: A tool to convert yaml to json.
+parameters:
+  - name: yaml_content
+    type: string
+    required: true
+    label:
+      en_US: YAML content to convert for
+      pt_BR: YAML content to convert for
+    human_description:
+      en_US: YAML content to convert for
+      pt_BR: YAML content to convert for
+    llm_description: YAML content to convert for
+    form: llm
+  - name: aws_region
+    type: string
+    required: false
+    label:
+      en_US: region of lambda
+      pt_BR: region of lambda
+    human_description:
+      en_US: region of lambda
+      pt_BR: region of lambda
+    llm_description: region of lambda
+    form: form
+  - name: lambda_name
+    type: string
+    required: false
+    label:
+      en_US: name of lambda
+      pt_BR: name of lambda
+    human_description:
+      en_US: name of lambda
+      pt_BR: name of lambda
+    form: form

@@ -1,0 +1,113 @@
+identity:
+  name: lambda_translate_utils
+  author: AWS
+  label:
+    en_US: TranslateTool
+    pt_BR: TranslateTool
+  icon: icon.svg
+description:
+  human:
+    en_US: A util tools for LLM translation, extra deployment is needed on AWS. Please refer Github Repo - https://github.com/ybalbert001/dynamodb-rag
+    pt_BR: A util tools for LLM translation, specfic Lambda Function deployment is needed on AWS. Please refer Github Repo - https://github.com/ybalbert001/dynamodb-rag
+  llm: A util tools for translation.
+parameters:
+  - name: text_content
+    type: string
+    required: true
+    label:
+      en_US: source content for translation
+      pt_BR: source content for translation
+    human_description:
+      en_US: source content for translation
+      pt_BR: source content for translation
+    llm_description: source content for translation
+    form: llm
+  - name: src_lang
+    type: string
+    required: true
+    label:
+      en_US: source language code
+      pt_BR: source language code
+    human_description:
+      en_US: source language code
+      pt_BR: source language code
+    llm_description: source language code
+    form: llm
+  - name: dest_lang
+    type: string
+    required: true
+    label:
+      en_US: target language code
+      pt_BR: target language code
+    human_description:
+      en_US: target language code
+      pt_BR: target language code
+    llm_description: target language code
+    form: llm
+  - name: aws_region
+    type: string
+    required: false
+    label:
+      en_US: region of Lambda
+      pt_BR: region of Lambda
+    human_description:
+      en_US: region of Lambda
+      pt_BR: region of Lambda
+    llm_description: region of Lambda
+    form: form
+  - name: model_id
+    type: string
+    required: false
+    default: anthropic.claude-3-sonnet-20240229-v1:0
+    label:
+      en_US: LLM model_id in bedrock
+      pt_BR: LLM model_id in bedrock
+    human_description:
+      en_US: LLM model_id in bedrock
+      pt_BR: LLM model_id in bedrock
+    llm_description: LLM model_id in bedrock
+    form: form
+  - name: dictionary_name
+    type: string
+    required: false
+    label:
+      en_US: dictionary name for term mapping
+      pt_BR: dictionary name for term mapping
+    human_description:
+      en_US: dictionary name for term mapping
+      pt_BR: dictionary name for term mapping
+    llm_description: dictionary name for term mapping
+    form: form
+  - name: request_type
+    type: select
+    required: false
+    label:
+      en_US: request type
+      pt_BR: request type
+    human_description:
+      en_US: request type
+      pt_BR: request type
+    default: term_mapping
+    options:
+      - value: term_mapping
+        label:
+          en_US: term_mapping
+      - value: segment_only
+        label:
+          en_US: segment_only
+      - value: translate
+        label:
+          en_US: translate
+    form: form
+  - name: lambda_name
+    type: string
+    default: "translate_tool"
+    required: true
+    label:
+      en_US: AWS Lambda for term mapping retrieval
+      pt_BR: lambda name for term mapping retrieval
+    human_description:
+      en_US: AWS Lambda for term mapping retrieval
+      pt_BR: AWS Lambda for term mapping retrieval
+    llm_description: AWS Lambda for term mapping retrieval
+    form: form

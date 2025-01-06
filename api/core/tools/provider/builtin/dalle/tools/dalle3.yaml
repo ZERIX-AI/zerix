@@ -1,0 +1,103 @@
+identity:
+  name: dalle3
+  author: Zerix
+  label:
+    en_US: DALL-E 3
+    pt_BR: DALL-E 3
+  description:
+    en_US: DALL-E 3 is a powerful drawing tool that can draw the image you want based on your prompt, compared to DallE 2, DallE 3 has stronger drawing ability, but it will consume more resources
+    pt_BR: DALL-E 3 is a powerful drawing tool that can draw the image you want based on your prompt, compared to DallE 2, DallE 3 has stronger drawing ability, but it will consume more resources
+description:
+  human:
+    en_US: DALL-E is a text to image tool
+    pt_BR: DALL-E is a text to image tool
+  llm: DALL-E is a tool used to generate images from text
+parameters:
+  - name: prompt
+    type: string
+    required: true
+    label:
+      en_US: Prompt
+      pt_BR: Prompt
+    human_description:
+      en_US: Image prompt, you can check the official documentation of DallE 3
+      pt_BR: Image prompt, you can check the official documentation of DallE 3
+    llm_description: Image prompt of DallE 3, you should describe the image you want to generate as a list of words as possible as detailed
+    form: llm
+  - name: size
+    type: select
+    required: true
+    human_description:
+      en_US: selecting the image size
+      pt_BR: selecting the image size
+    label:
+      en_US: Image size
+      pt_BR: Image size
+    form: form
+    options:
+      - value: square
+        label:
+          en_US: Squre(1024x1024)
+          pt_BR: Squre(1024x1024)
+      - value: vertical
+        label:
+          en_US: Vertical(1024x1792)
+          pt_BR: Vertical(1024x1792)
+      - value: horizontal
+        label:
+          en_US: Horizontal(1792x1024)
+          pt_BR: Horizontal(1792x1024)
+    default: square
+  - name: n
+    type: number
+    required: true
+    human_description:
+      en_US: selecting the number of images
+      pt_BR: selecting the number of images
+    label:
+      en_US: Number of images
+      pt_BR: Number of images
+    form: form
+    min: 1
+    max: 1
+    default: 1
+  - name: quality
+    type: select
+    required: true
+    human_description:
+      en_US: selecting the image quality
+      pt_BR: selecting the image quality
+    label:
+      en_US: Image quality
+      pt_BR: Image quality
+    form: form
+    options:
+      - value: standard
+        label:
+          en_US: Standard
+          pt_BR: Standard
+      - value: hd
+        label:
+          en_US: HD
+          pt_BR: HD
+    default: standard
+  - name: style
+    type: select
+    required: true
+    human_description:
+      en_US: selecting the image style
+      pt_BR: selecting the image style
+    label:
+      en_US: Image style
+      pt_BR: Image style
+    form: form
+    options:
+      - value: vivid
+        label:
+          en_US: Vivid
+          pt_BR: Vivid
+      - value: natural
+        label:
+          en_US: Natural
+          pt_BR: Natural
+    default: vivid

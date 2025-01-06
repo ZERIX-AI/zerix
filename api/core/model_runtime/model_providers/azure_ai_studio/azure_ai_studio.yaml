@@ -1,0 +1,54 @@
+provider: azure_ai_studio
+label:
+  en_US: Azure AI Studio
+icon_small:
+  en_US: icon_s_en.png
+icon_large:
+  en_US: icon_l_en.png
+description:
+  en_US: Azure AI Studio
+background: "#93c5fd"
+help:
+  title:
+    en_US: How to deploy customized model on Azure AI Studio
+  url:
+    en_US: https://learn.microsoft.com/en-us/azure/ai-studio/how-to/deploy-models
+supported_model_types:
+  - llm
+  - rerank
+configurate_methods:
+  - customizable-model
+model_credential_schema:
+  model:
+    label:
+      en_US: Model Name
+    placeholder:
+      en_US: Enter your model name
+  credential_form_schemas:
+    - variable: endpoint
+      label:
+        en_US: Azure AI Studio Endpoint
+      type: text-input
+      required: true
+      placeholder:
+        en_US: 'Enter your API Endpoint, eg: https://example.com'
+    - variable: api_key
+      required: true
+      label:
+        en_US: API Key
+      type: secret-input
+      placeholder:
+        en_US: Enter your Azure AI Studio API Key
+      show_on:
+        - variable: __model_type
+          value: llm
+    - variable: jwt_token
+      required: true
+      label:
+        en_US: JWT Token
+      type: secret-input
+      placeholder:
+        en_US: Enter your Azure AI Studio JWT Token
+      show_on:
+        - variable: __model_type
+          value: rerank

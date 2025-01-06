@@ -1,0 +1,55 @@
+identity:
+  name: apply_guardrail
+  author: AWS
+  label:
+    en_US: Content Moderation Guardrails
+description:
+  human:
+    en_US: Content Moderation Guardrails utilizes the ApplyGuardrail API, a feature of Guardrails for Amazon Bedrock. This API is capable of evaluating input prompts and model responses for all Foundation Models (FMs), including those on Amazon Bedrock, custom FMs, and third-party FMs. By implementing this functionality, organizations can achieve centralized governance across all their generative AI applications, thereby enhancing control and consistency in content moderation.
+  llm: Content Moderation Guardrails utilizes the ApplyGuardrail API, a feature of Guardrails for Amazon Bedrock. This API is capable of evaluating input prompts and model responses for all Foundation Models (FMs), including those on Amazon Bedrock, custom FMs, and third-party FMs. By implementing this functionality, organizations can achieve centralized governance across all their generative AI applications, thereby enhancing control and consistency in content moderation.
+parameters:
+  - name: guardrail_id
+    type: string
+    required: true
+    label:
+      en_US: Guardrail ID
+    human_description:
+      en_US: Please enter the ID of the Guardrail that has already been created on Amazon Bedrock, for example 'qk5nk0e4b77b'.
+    llm_description: Please enter the ID of the Guardrail that has already been created on Amazon Bedrock, for example 'qk5nk0e4b77b'.
+    form: form
+  - name: guardrail_version
+    type: string
+    required: true
+    label:
+      en_US: Guardrail Version Number
+    human_description:
+      en_US: Please enter the published version of the Guardrail ID that has already been created on Amazon Bedrock. This is typically a version number, such as 2.
+    llm_description: Please enter the published version of the Guardrail ID that has already been created on Amazon Bedrock. This is typically a version number, such as 2.
+    form: form
+  - name: source
+    type: string
+    required: true
+    label:
+      en_US: Content Source (INPUT or OUTPUT)
+    human_description:
+      en_US: The source of data used in the request to apply the guardrail. Valid Values "INPUT | OUTPUT"
+    llm_description: The source of data used in the request to apply the guardrail. Valid Values "INPUT | OUTPUT"
+    form: form
+  - name: text
+    type: string
+    required: true
+    label:
+      en_US: Content to be reviewed
+    human_description:
+      en_US: The content used for requesting guardrail review, which can be either user input or LLM output.
+    llm_description: The content used for requesting guardrail review, which can be either user input or LLM output.
+    form: llm
+  - name: aws_region
+    type: string
+    required: true
+    label:
+      en_US: AWS Region
+    human_description:
+      en_US: Please enter the AWS region for the Bedrock client, for example 'us-east-1'.
+    llm_description: Please enter the AWS region for the Bedrock client, for example 'us-east-1'.
+    form: form
