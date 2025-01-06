@@ -24,7 +24,7 @@ Zerix aims to become the standard infrastructure for intelligent agent networks,
 - Self-Learning and Adaptive Optimization: Employs federated learning and adaptive model updating mechanisms to continuously improve task chain execution.
 - Open API Support: Offers RESTful API and gRPC interfaces for third-party intelligent agents and service integrations, extending the platform's functionality.
 
-## Overview
+### 2.3 Overview
 
 The platform consists of several key components:
 
@@ -33,33 +33,33 @@ The platform consists of several key components:
 - **Middleware Services**: Supporting services including database, cache, and vector store
 - **SDK**: Client libraries for multiple programming languages
 
-## Components
+## 3. Components
 
-### API Service
+### 3.1 API Service
 - RESTful API service for AI operations
 - Supports multiple AI model providers
 - Handles chat, completion, and workflow operations
 - Built with scalability and performance in mind
 
-### Web Console
+### 3.2 Web Console
 - Modern web interface for platform management
 - Real-time chat and completion testing
 - Application configuration and monitoring
 - User and team management
 
-### Middleware Services
+### 3.3 Middleware Services
 - PostgreSQL for persistent data storage
 - Redis for caching and session management
 - Weaviate for vector storage
 - Sandbox service for code execution
 
-### SDKs
+### 3.4 SDKs
 Available for multiple programming languages:
 - Node.js SDK
 - Python SDK
 - More coming soon...
 
-## Deployment
+## 4. Deployment
 
 The platform is containerized and can be deployed using Kubernetes:
 
@@ -77,17 +77,18 @@ kubectl apply -f k3s/zerix-ai-api.yaml
 kubectl apply -f k3s/zerix-ai-web.yaml
 ```
 
-## Configuration
+## 5. Configuration
 
 Key configuration files:
 - `k3s/zerix-ai-api-config.yaml`: API service configuration
 - `k3s/zerix-ai-middleware.yaml`: Middleware services configuration
 - `k3s/zerix-ai-web.yaml`: Web console configuration
 
-## License
+## 6. License
 
-MIT License
+Apache License 2.0
 
-## Contact
+## 7. Contact
 
 For more information, please contact: business@zerix.io
+
